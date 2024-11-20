@@ -21,13 +21,14 @@ def testing():
         prediction = 0
         maxn = neurons[2][i][0]
         for j in range(10):
-            print(neurons[2][i][j])
             if maxn < neurons[2][i][j]:
                 prediction = j
                 maxn = neurons[2][i][j]
         if prediction == int(ground_truth[i]):
             score += 1
         if i % 100 == 0:
+            for j in range(10):
+                print(neurons[2][i][j])
             print(prediction, int(ground_truth[i]))
             print("\n")
 

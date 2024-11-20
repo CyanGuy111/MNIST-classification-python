@@ -1,4 +1,3 @@
-
 layer_count = 3
 weights = [[] for i in range(layer_count)]
 biases = [[] for i in range(layer_count)]
@@ -12,7 +11,6 @@ test_size = 1000 #test batch size
 dataset_size = 10000    
 train_num = 1000 #number of iteration in 1 epoch
 train_num = int((dataset_size - test_size) / train_size)
-is_random = True
+is_random = False
 learning_rate = 0.05
 norm = 10000
-epoch = 1
