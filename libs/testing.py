@@ -17,7 +17,7 @@ def testing():
     loss = forwardProp(lDataset, verify, test_size)
     score = 0
 
-    for i in range(10):
+    for i in range(test_size):
         prediction = 0
         maxn = neurons[2][i][0]
         for j in range(10):
@@ -27,8 +27,9 @@ def testing():
                 maxn = neurons[2][i][j]
         if prediction == int(ground_truth[i]):
             score += 1
-        print(prediction, int(ground_truth[i]))
-        print("\n")
+        if i % 100 == 0:
+            print(prediction, int(ground_truth[i]))
+            print("\n")
 
     print("Test result: {}/{} ({:.0f}%). Avg loss: {}".format(score, test_size, (score / test_size) * 100, loss))
 
