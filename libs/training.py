@@ -1,8 +1,6 @@
 from .variables import *
-from .matCalc import *
 from .fileReading import *
 from .mathFunc import *
-from .weightBiasGen import *
 from .forward import *
 from .backprop import *
 
@@ -14,8 +12,11 @@ def training(current):
             test = dataset[i * train_size + j][1 : 785]
             verify[j][int(dataset[i * train_size + j][0])] = 1
             lDataset.append(test)
+
         loss = forwardProp(lDataset, verify, train_size)
-        backprop(lDataset, verify)
+        backprop(lDataset, verify, train_size)
+
         if i % 10 == 0:
             print("Epoch: {}. Training progress: [{}/{}] ({:.0f}%); Avg loss: {}".format(current + 1, i + 1, train_num, ((i + 1) / train_num) * 100, loss))
-        saveState()
+        if i % 100 == 0:
+            saveState()
